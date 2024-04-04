@@ -20,9 +20,9 @@
     zoxide = { enable = true; };
     zsh = {
       enable = true;
+      enableAutosuggestions = true;
       enableCompletion = true;
       enableVteIntegration = true;
-      autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
       oh-my-zsh = {
         enable = true;

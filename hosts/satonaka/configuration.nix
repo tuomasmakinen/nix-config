@@ -1,6 +1,8 @@
 { inputs, ... }:
 
 {
+  imports = [ ../common ];
+
   # environment.systemPackages = [ ];
 
   # Auto upgrade nix package and the daemon service.

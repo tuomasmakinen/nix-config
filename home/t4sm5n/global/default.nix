@@ -12,7 +12,7 @@
 
   nix = {
     package = lib.mkDefault pkgs.nix;
-    settings.experimental-features = "nix-command flakes";
+    settings.experimental-features = [ "nix-command" "flakes" ];
   };
 
   home.packages = with pkgs; [ fira-code ];
