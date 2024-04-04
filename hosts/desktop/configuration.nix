@@ -128,7 +128,7 @@
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
-    users = { "t4sm5n" = import ./home.nix; };
+    users = { "t4sm5n" = import ../../home/home.nix; };
   };
 
   programs.zsh.enable = true;

@@ -4,7 +4,7 @@
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "t4sm5n";
-  home.homeDirectory = "/home/t4sm5n";
+  home.homeDirectory = "/Users/t4sm5n";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -35,11 +35,12 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
 
-    pkgs.calibre
+    # pkgs.calibre
     pkgs.fira-code
     pkgs.nil
     pkgs.nixfmt
     pkgs.rustup
+    pkgs.spotify
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -79,7 +80,7 @@
   nixpkgs = {
     overlays = [ inputs.nur.overlay ];
     config.allowUnfreePredicate = pkg:
-      builtins.elem (lib.getName pkg) [ "dashlane" "vscode" ];
+      builtins.elem (lib.getName pkg) [ "dashlane" "vscode" "spotify" ];
   };
 
   # Let Home Manager install and manage itself.
@@ -87,7 +88,7 @@
 
   programs = {
     firefox = {
-      enable = true;
+      enable = false;
       profiles.t4sm5n = {
         extensions = with pkgs.nur.repos.rycee.firefox-addons; [
           ublock-origin
@@ -105,7 +106,7 @@
     kitty = {
       enable = true;
       font.name = "Fira Code";
-      font.size = 12;
+      font.size = 16;
       shellIntegration.enableZshIntegration = true;
       theme = "Dracula";
     };
@@ -148,7 +149,7 @@
       syntaxHighlighting.enable = true;
       oh-my-zsh = {
         enable = true;
-        plugins = [ "git" "macos" "colored-man-pages" ];
+        plugins = [ "git" ];
         theme = "robbyrussell";
       };
     };

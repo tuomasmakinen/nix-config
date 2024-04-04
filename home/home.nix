@@ -1,10 +1,10 @@
-{ config, pkgs, lib, inputs, ... }:
+{ config, pkgs, lib, inputs, home, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "t4sm5n";
-  home.homeDirectory = "/home/t4sm5n";
+  home.homeDirectory = home;
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -35,7 +35,7 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
 
-    pkgs.calibre
+    # pkgs.calibre
     pkgs.fira-code
     pkgs.nil
     pkgs.nixfmt
@@ -87,7 +87,7 @@
 
   programs = {
     firefox = {
-      enable = true;
+      enable = false;
       profiles.t4sm5n = {
         extensions = with pkgs.nur.repos.rycee.firefox-addons; [
           ublock-origin
