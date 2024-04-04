@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   # List packages installed in system profile. To search by name, run:
@@ -14,7 +14,6 @@
 
   # Create /etc/zshrc that loads the nix-darwin environment.
   programs.zsh.enable = true; # default shell on catalina
-  # programs.fish.enable = true;
 
   # Set Git commit hash for darwin-version.
   system.configurationRevision =
@@ -26,17 +25,4 @@
 
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";
-
-  users.users.t4sm5n = {
-    name = "t4sm5n";
-    home = "/Users/t4sm5n";
-  };
-
-  home-manager = {
-    extraSpecialArgs = {
-      inherit inputs;
-      home = "/Users/t4sm5n";
-    };
-    users = { "t4sm5n" = import ../../home/home.nix; };
-  };
 }
