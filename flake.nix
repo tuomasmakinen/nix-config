@@ -16,6 +16,9 @@
 
     # Nix User Repository
     nur.url = "github:nix-community/nur";
+
+    mac-app-util.url = "github:hraban/mac-app-util";
+    mac-app-util.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, home-manager, nix-darwin, ... }@inputs:
@@ -34,6 +37,7 @@
       inherit lib;
       nixosModules = import ./modules/nixos;
       homeManagerModules = import ./modules/home-manager;
+      darwinTrampolines = inputs.mac-app-util.homeManagerModules.default;
 
       overlays = import ./overlays { inherit inputs outputs; };
 
