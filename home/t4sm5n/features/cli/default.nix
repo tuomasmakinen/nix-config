@@ -10,6 +10,7 @@
   ];
 
   programs = {
+    java = { enable = true; };
     git = {
       enable = true;
       userName = "t4sm5n";
