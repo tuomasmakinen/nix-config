@@ -45,6 +45,7 @@
         "editor.fontLigatures" = true;
         "editor.fontSize" = 16;
       };
+      package = pkgs.unstable.vscode;
     };
   };
 }

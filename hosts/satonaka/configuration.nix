@@ -3,13 +3,13 @@
 {
   imports = [ ../common ];
 
-  # environment.systemPackages = [ ];
+  # environment.systemPackages = with pkgs; [ ];
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
 
   # Create /etc/zshrc that loads the nix-darwin environment.
-  programs.zsh.enable = true; # default shell on catalina
+  programs.zsh.enable = true;
 
   # Set Git commit hash for darwin-version.
   system.configurationRevision =
