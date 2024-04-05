@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   programs = {
     firefox = {
-      enable = false;
+      enable = true;
       profiles.t4sm5n = {
         extensions = with pkgs.nur.repos.rycee.firefox-addons; [
           ublock-origin
@@ -12,7 +12,7 @@
     kitty = {
       enable = true;
       font.name = "Fira Code";
-      font.size = 16;
+      font.size = 12;
       shellIntegration.enableZshIntegration = true;
       theme = "Dracula";
     };
