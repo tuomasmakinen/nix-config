@@ -7,6 +7,8 @@
     nixfmt
 
     rustup
+
+    unstable.quarkus
   ];
 
   programs = {
