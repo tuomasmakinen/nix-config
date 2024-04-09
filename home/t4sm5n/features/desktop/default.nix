@@ -43,6 +43,7 @@
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = "nil";
         "nix.serverSettings.nil.formatting.command" = [ "nixfmt" ];
+        "nix.serverSettings.nil.nix.flake.autoArchive" = true;
 
         # style
         "workbench.colorTheme" = "Dracula";
