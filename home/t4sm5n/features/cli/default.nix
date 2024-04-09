@@ -12,13 +12,23 @@
   ];
 
   programs = {
-    java = { enable = true; };
+    direnv = {
+      enable = true;
+      enableZshIntegration = true;
+      nix-direnv.enable = true;
+    };
     git = {
       enable = true;
       userName = "t4sm5n";
       userEmail = "28858039+t4sm5n@users.noreply.github.com";
       extraConfig = { init = { defaultBranch = "main"; }; };
       diff-so-fancy.enable = true;
+    };
+    neovim = {
+      enable = true;
+      viAlias = true;
+      vimAlias = true;
+      vimdiffAlias = true;
     };
     zoxide = { enable = true; };
     zsh = {
