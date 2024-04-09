@@ -26,8 +26,12 @@
       enableExtensionUpdateCheck = false;
       enableUpdateCheck = false;
       extensions = with pkgs.vscode-extensions;
-        [ dracula-theme.theme-dracula jnoortheen.nix-ide ]
-        ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [{
+        [
+          dracula-theme.theme-dracula
+          rust-lang.rust-analyzer
+          jnoortheen.nix-ide
+          arrterian.nix-env-selector
+        ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [{
           name = "intellij-idea-keybindings";
           publisher = "k--kato";
           version = "1.6.1";

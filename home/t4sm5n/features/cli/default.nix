@@ -6,8 +6,6 @@
     nil
     nixfmt
 
-    rustup
-
     unstable.quarkus
   ];
 
