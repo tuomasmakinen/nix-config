@@ -58,7 +58,7 @@
     pulse.enable = true;
   };
 
-  # environment.systemPackages = with pkgs; [ ];
+  environment.systemPackages = with pkgs; [ unstable.obsidian ];
 
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
