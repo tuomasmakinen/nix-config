@@ -16,10 +16,10 @@
     };
     kitty = {
       enable = true;
-      font.name = "Fira Code";
-      font.size = 12;
+      font.name = "FiraCode Nerd Font Ret";
+      font.size = 10;
       shellIntegration.enableZshIntegration = true;
-      theme = "Dracula";
+      theme = "Nord";
     };
     vscode = {
       enable = true;
@@ -27,7 +27,7 @@
       enableUpdateCheck = false;
       extensions = with pkgs.vscode-extensions;
         [
-          dracula-theme.theme-dracula
+          arcticicestudio.nord-visual-studio-code
           rust-lang.rust-analyzer
           jnoortheen.nix-ide
           arrterian.nix-env-selector
@@ -50,10 +50,10 @@
         "nix.serverSettings.nil.nix.flake.autoArchive" = true;
 
         # style
-        "workbench.colorTheme" = "Dracula";
-        "editor.fontFamily" = "Fira Code";
+        "workbench.colorTheme" = "Nord";
+        "editor.fontFamily" = "FiraCode Nerd Font Ret";
         "editor.fontLigatures" = true;
-        "editor.fontSize" = 16;
+        "editor.fontSize" = 13;
       };
       package = pkgs.unstable.vscode;
     };

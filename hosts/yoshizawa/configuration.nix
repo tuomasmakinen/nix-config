@@ -3,6 +3,11 @@
 {
   imports = [ ./hardware-configuration.nix ../common ];
 
+  fonts.packages = with pkgs; [
+    (nerdfonts.override { fonts = [ "DejaVuSansMono" "FiraCode" ]; })
+    fira
+  ];
+
   services.autorandr = {
     enable = true;
     profiles = {
@@ -58,7 +63,7 @@
     pulse.enable = true;
   };
 
-  environment.systemPackages = with pkgs; [ unstable.obsidian ];
+  environment.systemPackages = with pkgs; [ unstable.obsidian unstable.beeper ];
 
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
@@ -69,6 +74,8 @@
     description = "Tuomas Mäkinen";
     extraGroups = [ "networkmanager" "wheel" ];
   };
+
+  security.sudo.wheelNeedsPassword = false;
 
   networking = {
     hostName = "yoshizawa";
@@ -89,6 +96,12 @@
     LC_PAPER = "fi_FI.UTF-8";
     LC_TELEPHONE = "fi_FI.UTF-8";
     LC_TIME = "fi_FI.UTF-8";
+  };
+
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
   };
 
   # This will add each flake input as a registry
