@@ -16,7 +16,7 @@
     };
     kitty = {
       enable = true;
-      font.name = "FiraCode Nerd Font Ret";
+      font.name = "Fira Code";
       font.size = 10;
       shellIntegration.enableZshIntegration = true;
       theme = "Nord";
@@ -51,7 +51,7 @@
 
         # style
         "workbench.colorTheme" = "Nord";
-        "editor.fontFamily" = "FiraCode Nerd Font Ret";
+        "editor.fontFamily" = "Fira Code";
         "editor.fontLigatures" = true;
         "editor.fontSize" = 13;
       };

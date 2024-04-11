@@ -3,10 +3,9 @@
 {
   imports = [ ./hardware-configuration.nix ../common ];
 
-  fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "DejaVuSansMono" "FiraCode" ]; })
-    fira
-  ];
+  fonts.packages = with pkgs; [ fira ];
+
+  environment.systemPackages = with pkgs; [ unstable.obsidian unstable.beeper ];
 
   services.autorandr = {
     enable = true;
@@ -62,8 +61,6 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-
-  environment.systemPackages = with pkgs; [ unstable.obsidian unstable.beeper ];
 
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
