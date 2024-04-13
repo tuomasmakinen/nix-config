@@ -51,6 +51,10 @@
           modules = [ ./hosts/yoshizawa/configuration.nix ];
           specialArgs = { inherit inputs outputs; };
         };
+        maaka = nixpkgs.lib.nixosSystem {
+          modules = [ ./hosts/maaka/configuration.nix ];
+          specialArgs = { inherit inputs outputs; };
+        };
       };
 
       # Darwin configuration entrypoint
@@ -65,6 +69,11 @@
       # Standalone home-manager configuration entrypoint
       # Available through 'home-manager --flake .#your-username@your-hostname'
       homeConfigurations = {
+        "t4sm5n@maaka" = home-manager.lib.homeManagerConfiguration {
+          modules = [ ./home/t4sm5n/maaka.nix ];
+          pkgs = pkgsFor.x86_64-linux;
+          extraSpecialArgs = { inherit inputs outputs; };
+        };
         "t4sm5n@yoshizawa" = home-manager.lib.homeManagerConfiguration {
           modules = [ ./home/t4sm5n/yoshizawa.nix ];
           pkgs = pkgsFor.x86_64-linux;
