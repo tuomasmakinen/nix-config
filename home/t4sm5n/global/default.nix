@@ -1,5 +1,6 @@
 { outputs, lib, config, pkgs, ... }: {
-  imports = [ ../features/cli ../features/desktop ];
+  imports = [ ../features/cli ../features/desktop ]
+    ++ (builtins.attrValues outputs.homeManagerModules);
 
   nixpkgs = {
     overlays = builtins.attrValues outputs.overlays;

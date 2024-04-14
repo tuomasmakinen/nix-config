@@ -19,9 +19,18 @@
 
     mac-app-util.url = "github:hraban/mac-app-util";
     mac-app-util.inputs.nixpkgs.follows = "nixpkgs";
+
+    hyprland.url = "github:hyprwm/Hyprland";
+
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
+
+    nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-darwin, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nix-darwin, nix-colors, ... }@inputs:
     let
       inherit (self) outputs;
       lib = nixpkgs.lib // nix-darwin.lib // home-manager.lib;
@@ -77,7 +86,7 @@
         "t4sm5n@yoshizawa" = home-manager.lib.homeManagerConfiguration {
           modules = [ ./home/t4sm5n/yoshizawa.nix ];
           pkgs = pkgsFor.x86_64-linux;
-          extraSpecialArgs = { inherit inputs outputs; };
+          extraSpecialArgs = { inherit inputs outputs nix-colors; };
         };
         "t4sm5n@satonaka" = home-manager.lib.homeManagerConfiguration {
           modules = [ ./home/t4sm5n/satonaka.nix ];

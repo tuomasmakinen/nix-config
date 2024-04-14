@@ -1,4 +1,6 @@
 { pkgs, ... }: {
+  imports = [ ./starship.nix ];
+
   home.packages = with pkgs; [
     jq
     yq
