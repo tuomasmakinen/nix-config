@@ -7,8 +7,6 @@
 
     nil
     nixfmt
-
-    unstable.quarkus
   ];
 
   programs = {
@@ -19,7 +17,7 @@
     };
     git = {
       enable = true;
-      userName = "t4sm5n";
+      userName = "Tuomas Mäkinen";
       userEmail = "28858039+t4sm5n@users.noreply.github.com";
       extraConfig = { init = { defaultBranch = "main"; }; };
       diff-so-fancy.enable = true;
