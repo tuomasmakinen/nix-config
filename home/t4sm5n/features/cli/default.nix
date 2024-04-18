@@ -1,13 +1,7 @@
 { pkgs, ... }: {
   imports = [ ./starship.nix ];
 
-  home.packages = with pkgs; [
-    jq
-    yq
-
-    nil
-    nixfmt
-  ];
+  home.packages = with pkgs; [ nil nixfmt ];
 
   programs = {
     direnv = {

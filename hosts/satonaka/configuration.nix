@@ -1,9 +1,17 @@
-{ inputs, ... }:
+{ inputs, lib, pkgs, ... }:
 
 {
   imports = [ ../common ];
 
-  # environment.systemPackages = with pkgs; [ ];
+  environment.systemPackages = with pkgs; [ unstable.devenv ];
+
+  homebrew = {
+    enable = true;
+    casks =
+      [ "alt-tab" "beeper" "docker" "obsidian" "rectangle" "sanesidebuttons" ];
+  };
+
+  nix.settings.auto-optimise-store = lib.mkForce false;
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
