@@ -9,9 +9,12 @@
     product = "c547";
   }];
 
+  environment.sessionVariables = { FLAKE = "/home/t4sm5n/nix-config"; };
+
   environment.systemPackages = with pkgs; [
     unstable.beeper
     unstable.calibre
+    unstable.nh
     nordic
     unstable.obsidian
     ranger
