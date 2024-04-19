@@ -3,14 +3,17 @@
 {
   imports = [ ../common ];
 
-  environment.systemPackages = with pkgs; [ unstable.devenv ];
+  # Packages to install
+  # environment.systemPackages = with pkgs; [ ];
 
+  # Packages to install with brew
   homebrew = {
     enable = true;
     casks =
       [ "alt-tab" "beeper" "docker" "obsidian" "rectangle" "sanesidebuttons" ];
   };
 
+  # Broken on darwin
   nix.settings.auto-optimise-store = lib.mkForce false;
 
   # Auto upgrade nix package and the daemon service.

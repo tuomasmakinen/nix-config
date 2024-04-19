@@ -10,20 +10,12 @@
           rust-lang.rust-analyzer
           jnoortheen.nix-ide
           arrterian.nix-env-selector
-        ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-          # {
-          #   name = "intellij-idea-keybindings";
-          #   publisher = "k--kato";
-          #   version = "1.6.1";
-          #   sha256 = "X+jMqn8R6DxIjTb4v5HTRTYMmWmZiBRXdXOxCb0wwGU=";
-          # }
-          {
-            name = "linuxkeybindings";
-            publisher = "fredhappyface";
-            version = "1.87.2";
-            sha256 = "YGFyYuOcTCwUrc6mGaM3vm7c7+XW5TxHiAAs5n86rOM=";
-          }
-        ];
+        ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [{
+          name = "linuxkeybindings";
+          publisher = "fredhappyface";
+          version = "1.87.2";
+          sha256 = "YGFyYuOcTCwUrc6mGaM3vm7c7+XW5TxHiAAs5n86rOM=";
+        }];
       mutableExtensionsDir = false;
       userSettings = {
         # behavior
