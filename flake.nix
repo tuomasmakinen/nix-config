@@ -9,27 +9,24 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nur.url = "github:nix-community/nur";
 
     mac-app-util.url = "github:hraban/mac-app-util";
     mac-app-util.inputs.nixpkgs.follows = "nixpkgs";
-
-    nix-colors.url = "github:misterio77/nix-colors";
   };
 
   outputs =
     {
       self,
       nixpkgs,
-      home-manager,
       nix-darwin,
-      nix-colors,
+      home-manager,
       ...
     }@inputs:
     let
@@ -88,7 +85,7 @@
           modules = [ ./home/t4sm5n/yoshizawa.nix ];
           pkgs = pkgsFor.x86_64-linux;
           extraSpecialArgs = {
-            inherit inputs outputs nix-colors;
+            inherit inputs outputs;
           };
         };
         "t4sm5n@satonaka" = home-manager.lib.homeManagerConfiguration {
