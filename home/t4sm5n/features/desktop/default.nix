@@ -1,9 +1,10 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   imports = [ ./vscode.nix ];
 
   home.packages = with pkgs; [
-    unstable.jetbrains.rust-rover
-    unstable.jetbrains.idea-community
+    jetbrains.rust-rover
+    jetbrains.idea-community
   ];
 
   programs = {

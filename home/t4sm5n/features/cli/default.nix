@@ -1,7 +1,6 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   imports = [ ./starship.nix ];
-
-  home.packages = with pkgs; [ nil nixfmt ];
 
   programs = {
     direnv = {
@@ -13,7 +12,11 @@
       enable = true;
       userName = "Tuomas Mäkinen";
       userEmail = "28858039+t4sm5n@users.noreply.github.com";
-      extraConfig = { init = { defaultBranch = "main"; }; };
+      extraConfig = {
+        init = {
+          defaultBranch = "main";
+        };
+      };
       diff-so-fancy.enable = true;
     };
     neovim = {
@@ -22,10 +25,12 @@
       vimAlias = true;
       vimdiffAlias = true;
     };
-    zoxide = { enable = true; };
+    zoxide = {
+      enable = true;
+    };
     zsh = {
       enable = true;
-      enableAutosuggestions = true;
+      autosuggestion.enable = true;
       enableCompletion = true;
       enableVteIntegration = true;
       syntaxHighlighting.enable = true;

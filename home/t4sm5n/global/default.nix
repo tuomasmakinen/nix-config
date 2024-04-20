@@ -1,6 +1,15 @@
-{ outputs, lib, config, pkgs, ... }: {
-  imports = [ ../features/cli ../features/desktop ]
-    ++ (builtins.attrValues outputs.homeManagerModules);
+{
+  outputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+{
+  imports = [
+    ../features/cli
+    ../features/desktop
+  ] ++ (builtins.attrValues outputs.homeManagerModules);
 
   nixpkgs = {
     overlays = builtins.attrValues outputs.overlays;
@@ -13,7 +22,10 @@
 
   nix = {
     package = lib.mkDefault pkgs.nix;
-    settings.experimental-features = [ "nix-command" "flakes" ];
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
   };
 
   home.packages = with pkgs; [ fira-code ];
