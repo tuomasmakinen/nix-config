@@ -4,7 +4,7 @@
 
   home.packages = with pkgs; [
     beeper
-    #    calibre
+    #calibre
     nh
     obsidian
     ranger

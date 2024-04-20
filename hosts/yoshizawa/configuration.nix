@@ -9,7 +9,7 @@
 
 {
   imports = [
-    ./display.nix
+    ./desktop.nix
     ./hardware-additional.nix
     ./hardware-configuration.nix
     ./locale.nix
@@ -17,22 +17,9 @@
     ../common
   ] ++ (builtins.attrValues outputs.nixosModules);
 
-  environment.sessionVariables = {
-    FLAKE = "/home/t4sm5n/nix-config";
-  };
-
-  environment.systemPackages = with pkgs; [
-    git
-    nordic
-  ];
+  environment.systemPackages = with pkgs; [ nordic ];
 
   fonts.packages = with pkgs; [ fira ];
-
-  services.xserver = {
-    enable = true;
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
-  };
 
   services.printing.enable = true;
 

@@ -1,5 +1,16 @@
-{ ... }:
 {
+  services.xserver = {
+    enable = true;
+    displayManager.sddm.enable = true;
+    desktopManager.plasma5.enable = true;
+    xrandrHeads = [
+      { output = "DP-3"; }
+      {
+        output = "DP-2";
+        primary = true;
+      }
+    ];
+  };
 
   services.autorandr = {
     enable = true;
@@ -25,15 +36,5 @@
         };
       };
     };
-  };
-
-  services.xserver = {
-    xrandrHeads = [
-      { output = "DP-3"; }
-      {
-        output = "DP-2";
-        primary = true;
-      }
-    ];
   };
 }
