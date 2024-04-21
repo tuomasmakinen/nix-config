@@ -1,8 +1,22 @@
+{ pkgs, ... }:
 {
   services.xserver = {
     enable = true;
-    displayManager.sddm.enable = true;
-    desktopManager.plasma5.enable = true;
+    excludePackages = with pkgs; [ xterm ];
+    displayManager = {
+      lightdm = {
+        enable = true;
+        greeters.slick = {
+          enable = true;
+          theme.name = "Nordic";
+          theme.package = pkgs.nordic;
+        };
+      };
+    };
+    desktopManager.xfce = {
+      enable = true;
+      thunarPlugins = [ pkgs.xfce.thunar-archive-plugin ];
+    };
     xrandrHeads = [
       { output = "DP-3"; }
       {

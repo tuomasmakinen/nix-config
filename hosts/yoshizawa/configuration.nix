@@ -21,7 +21,13 @@
 
   fonts.packages = with pkgs; [ fira ];
 
-  services.printing.enable = true;
+  environment.sessionVariables = {
+    FLAKE = "/home/t4sm5n/nix-config";
+  };
+
+  programs.steam = {
+    enable = true;
+  };
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -35,7 +41,7 @@
     jack.enable = true;
   };
 
-  security.sudo.wheelNeedsPassword = false;
+  services.printing.enable = true;
 
   networking = {
     hostName = "yoshizawa";
@@ -51,9 +57,6 @@
     name = "nix/path/${name}";
     value.source = value.flake;
   }) config.nix.registry;
-
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
 
   system.stateVersion = "23.11";
 }

@@ -12,4 +12,6 @@
       "wheel"
     ];
   };
+
+  security.sudo.wheelNeedsPassword = false;
 }
