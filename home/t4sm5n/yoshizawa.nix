@@ -14,6 +14,7 @@ in
 
   home.packages = with pkgs; [
     beeper
+    bottles
     custom_calibre
     lutris
     nh
@@ -37,7 +38,7 @@ in
       "Gtk/CursorThemeName" = "Nordic-cursors";
       "Gtk/FontName" = "Fira Sans 10";
       "Gtk/MonospaceFontName" = "Fira Code 10";
-      "Net/IconThemeName" = "Nordic-green";
+      "Net/IconThemeName" = "Nordic";
       "Net/ThemeName" = "Nordic-standard-buttons";
     };
   };
