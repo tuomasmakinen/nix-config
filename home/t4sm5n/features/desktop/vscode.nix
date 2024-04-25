@@ -35,14 +35,17 @@
         "[nix]"."editor.tabSize" = 2;
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = "nil";
-        "nix.serverSettings.nil.formatting.command" = [ "nixfmt" ];
-        "nix.serverSettings.nil.nix.flake.autoArchive" = true;
+        "nix.serverSettings" = {
+          nil.formatting.command = [ "nixfmt" ];
+          nil.nix.flake.autoArchive = true;
+        };
 
         # style
         "workbench.colorTheme" = "Nord";
         "editor.fontFamily" = "Fira Code";
         "editor.fontLigatures" = true;
         "editor.fontSize" = 14;
+        "terminal.integrated.fontFamily" = "Fira Code";
         "terminal.integrated.fontSize" = 14;
       };
     };

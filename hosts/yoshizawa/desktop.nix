@@ -1,21 +1,36 @@
 { pkgs, ... }:
 {
+  environment.budgie.excludePackages = with pkgs; [
+    gnome.cheese
+    gnome.gnome-terminal
+    gnome.totem
+    xterm
+  ];
+
   services.xserver = {
     enable = true;
-    excludePackages = with pkgs; [ xterm ];
     displayManager = {
       lightdm = {
         enable = true;
         greeters.slick = {
           enable = true;
-          theme.name = "Nordic";
-          theme.package = pkgs.nordic;
+          theme = {
+            name = "Nordic-standard-buttons";
+            package = pkgs.nordic;
+          };
+          iconTheme = {
+            name = "Zafiro-Nord-Dark";
+            package = pkgs.zafiro-nord-dark;
+          };
+          cursorTheme = {
+            name = "Nordic-cursors";
+            package = pkgs.nordic;
+          };
         };
       };
     };
-    desktopManager.xfce = {
+    desktopManager.budgie = {
       enable = true;
-      thunarPlugins = [ pkgs.xfce.thunar-archive-plugin ];
     };
     xrandrHeads = [
       { output = "DP-3"; }

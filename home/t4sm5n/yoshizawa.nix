@@ -1,45 +1,51 @@
 { pkgs, ... }:
-let
-  custom_mech = pkgs.python311Packages.mechanize.overridePythonAttrs (old: {
-    doCheck = false;
-  });
-  custom_calibre = pkgs.calibre.override (old: {
-    python3Packages = old.python3Packages // {
-      mechanize = custom_mech;
-    };
-  });
-in
 {
-  imports = [ ./global ];
+  imports = [
+    ./global
+    ./features/desktop/ulauncher
+  ];
 
   home.packages = with pkgs; [
     beeper
     bottles
-    custom_calibre
-    lutris
+    calibre
+    gnome.dconf-editor
     nh
+    nordic
     obsidian
     ranger
     usbutils
+    zafiro-nord-dark
   ];
 
-  xfconf.settings = {
-    xfce4-keyboard-shortcuts = {
-      "commands/custom/<Super>space" = "xfce4-appfinder -c";
-      "commands/custom/<Super>space/startup-notify" = true;
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+      gtk-theme = "Nordic-standard-buttons";
+      icon-theme = "Zafiro-Nord-Dark";
+      cursor-theme = "Nordic-cursors";
+      document-font-name = "Noto Sans 10";
+      font-name = "Noto Sans 10";
+      monospace-font-name = "Noto Sans Mono 10";
+      font-antialiasing = "rgba";
+      font-hinting = "none";
     };
-    xfce4-panel = {
-      "panels/panel-1/output-name" = "Primary";
-      "panels/panel-1/size" = 32;
-      "panels/panel-2/output-name" = "Primary";
-      "panels/panel-2/size" = 64;
+    "org/gnome/desktop/background" = {
+      picture-options = "zoom";
+      picture-uri = "file:///home/t4sm5n/Pictures/nix-d-nord-aurora.jpg";
+      picture-uri-dark = "file:///home/t4sm5n/Pictures/nix-d-nord-aurora.jpg";
     };
-    xsettings = {
-      "Gtk/CursorThemeName" = "Nordic-cursors";
-      "Gtk/FontName" = "Fira Sans 10";
-      "Gtk/MonospaceFontName" = "Fira Code 10";
-      "Net/IconThemeName" = "Nordic";
-      "Net/ThemeName" = "Nordic-standard-buttons";
+    "org/gnome/desktop/screensaver" = {
+      picture-options = "zoom";
+      picture-uri = "file:///home/t4sm5n/Pictures/nix-d-nord-aurora.jpg";
+      picture-uri-dark = "file:///home/t4sm5n/Pictures/nix-d-nord-aurora.jpg";
+    };
+    "org/gnome/desktop/wm/preferences" = {
+      theme = "Nordic";
+      titlebar-font = "Noto Sans Bold 10";
+    };
+    "com/solus-project/budgie-panel" = {
+      dark-theme = true;
     };
   };
 }

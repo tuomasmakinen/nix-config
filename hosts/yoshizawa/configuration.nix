@@ -17,9 +17,7 @@
     ../common
   ] ++ (builtins.attrValues outputs.nixosModules);
 
-  environment.systemPackages = with pkgs; [ nordic ];
-
-  fonts.packages = with pkgs; [ fira ];
+  fonts.packages = [ pkgs.fira-code ];
 
   environment.sessionVariables = {
     FLAKE = "/home/t4sm5n/nix-config";
