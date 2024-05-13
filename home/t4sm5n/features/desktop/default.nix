@@ -11,9 +11,11 @@
     firefox = {
       enable = true;
       profiles.t4sm5n = {
+        isDefault = true;
         extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-          ublock-origin
           dashlane
+          sponsorblock
+          ublock-origin
         ];
       };
     };
@@ -23,6 +25,12 @@
       font.size = 10.5;
       shellIntegration.enableZshIntegration = true;
       theme = "Nord";
+    };
+    thunderbird = {
+      enable = true;
+      profiles.t4sm5n = {
+        isDefault = true;
+      };
     };
   };
 }

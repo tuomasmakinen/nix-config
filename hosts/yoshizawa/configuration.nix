@@ -19,6 +19,11 @@
 
   fonts.packages = [ pkgs.fira-code ];
 
+  virtualisation = {
+    docker.enable = true;
+    waydroid.enable = true;
+  };
+
   environment.sessionVariables = {
     FLAKE = "/home/t4sm5n/nix-config";
   };
