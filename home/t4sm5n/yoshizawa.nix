@@ -65,14 +65,14 @@
       enable-hot-corners = false;
     };
     "org/gnome/desktop/background" = {
-      picture-options = "zoom";
-      picture-uri = "file:///home/t4sm5n/Pictures/nix-d-nord-aurora.jpg";
-      picture-uri-dark = "file:///home/t4sm5n/Pictures/nix-d-nord-aurora.jpg";
+      picture-options = "center";
+      picture-uri = builtins.toString ../../files/wallpaper.png;
+      picture-uri-dark = builtins.toString ../../files/wallpaper.png;
     };
     "org/gnome/desktop/screensaver" = {
-      picture-options = "zoom";
-      picture-uri = "file:///home/t4sm5n/Pictures/nix-d-nord-aurora.jpg";
-      picture-uri-dark = "file:///home/t4sm5n/Pictures/nix-d-nord-aurora.jpg";
+      picture-options = "center";
+      picture-uri = builtins.toString ../../files/wallpaper.png;
+      picture-uri-dark = builtins.toString ../../files/wallpaper.png;
     };
     "org/gnome/desktop/wm/preferences" = {
       theme = "Nordic-standard-buttons";
