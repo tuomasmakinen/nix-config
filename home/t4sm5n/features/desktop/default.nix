@@ -2,11 +2,6 @@
 {
   imports = [ ./vscode.nix ];
 
-  home.packages = with pkgs; [
-    jetbrains.rust-rover
-    jetbrains.idea-community
-  ];
-
   programs = {
     firefox = {
       enable = true;

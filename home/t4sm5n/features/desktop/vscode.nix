@@ -17,6 +17,12 @@
           rust-lang.rust-analyzer
           jnoortheen.nix-ide
           arrterian.nix-env-selector
+          # Java
+          redhat.java
+          visualstudioexptteam.vscodeintellicode
+          vscjava.vscode-gradle
+          # Kotlin
+          mathiasfrohlich.kotlin
         ]
         ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
           {
@@ -24,6 +30,12 @@
             publisher = "fredhappyface";
             version = "1.87.2";
             sha256 = "YGFyYuOcTCwUrc6mGaM3vm7c7+XW5TxHiAAs5n86rOM=";
+          }
+          {
+            name = "bpmn-vscode-extension";
+            publisher = "kie-group";
+            version = "0.32.0";
+            sha256 = "rOzbP6eUUEX5ETKwKgqXHSN8oPQHQ6QerAit+V3jWow=";
           }
         ];
       mutableExtensionsDir = false;
@@ -36,8 +48,10 @@
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = "nil";
         "nix.serverSettings" = {
-          nil.formatting.command = [ "nixfmt" ];
-          nil.nix.flake.autoArchive = true;
+          "nil" = {
+            formatting.command = [ "nixfmt" ];
+            nix.flake.autoArchive = true;
+          };
         };
 
         # style

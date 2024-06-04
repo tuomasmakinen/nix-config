@@ -17,6 +17,14 @@
           defaultBranch = "main";
         };
       };
+      ignores = [
+        "*~"
+        ".*.swp"
+        ".DS_Store"
+        ".[#~]*"
+        ".idea/"
+        "*.iml"
+      ];
       diff-so-fancy.enable = true;
     };
     neovim = {

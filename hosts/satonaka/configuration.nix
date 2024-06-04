@@ -1,9 +1,4 @@
-{
-  inputs,
-  lib,
-  pkgs,
-  ...
-}:
+{ inputs, lib, ... }:
 
 {
   imports = [ ../common ];
@@ -14,14 +9,20 @@
   # Packages to install with brew
   homebrew = {
     enable = true;
+    brews = [ "dnsmasq" ];
     casks = [
       "alt-tab"
-      "beeper"
+      "android-platform-tools"
       "docker"
       "obsidian"
       "rectangle"
       "sanesidebuttons"
     ];
+    onActivation = {
+      autoUpdate = true;
+      cleanup = "zap";
+      upgrade = true;
+    };
   };
 
   # Broken on darwin
