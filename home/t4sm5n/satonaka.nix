@@ -19,7 +19,12 @@
     kubectl
   ];
 
-  programs.zsh.initExtra = ''eval "$(/opt/homebrew/bin/brew shellenv)"'';
+  programs.zsh.initExtra = ''
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+  . ~/.asdf/plugins/java/set-java-home.zsh
+  '';
+  programs.zsh.oh-my-zsh.plugins = [ "asdf" ];
+
   programs.git.includes = [
     {
       path = "~/work/digione/.gitconfig";

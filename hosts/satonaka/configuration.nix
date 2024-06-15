@@ -9,7 +9,10 @@
   # Packages to install with brew
   homebrew = {
     enable = true;
-    brews = [ "dnsmasq" ];
+    brews = [
+      "asdf"
+      "dnsmasq"
+    ];
     casks = [
       "alt-tab"
       "android-platform-tools"
