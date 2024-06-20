@@ -14,6 +14,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    agenix = {
+      url = "github:ryantm/agenix";
+    };
+
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -68,6 +72,7 @@
         yoshizawa = nixpkgs.lib.nixosSystem {
           modules = [
             inputs.disko.nixosModules.disko
+            inputs.agenix.nixosModules.default
             ./hosts/yoshizawa/configuration.nix
           ];
           specialArgs = {

@@ -9,14 +9,17 @@
 
 {
   imports = [
+    ../common
+    ./backup.nix
     ./desktop.nix
     ./disko.nix
     ./hardware-additional.nix
     ./hardware-configuration.nix
     ./locale.nix
     ./users.nix
-    ../common
   ] ++ (builtins.attrValues outputs.nixosModules);
+
+  age.identityPaths = [ "${config.users.users.t4sm5n.home}/.ssh/id_ed25519" ];
 
   fonts.packages = [ pkgs.fira-code ];
 
@@ -35,7 +38,7 @@
   };
 
   # Enable sound with pipewire.
-  sound.enable = true;
+  sound.enable = false;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
