@@ -48,6 +48,7 @@
     {
       inherit lib;
       nixosModules = import ./modules/nixos;
+      darwinModules = import ./modules/darwin;
       homeManagerModules = import ./modules/home-manager;
       darwinTrampolines = inputs.mac-app-util.homeManagerModules.default;
 

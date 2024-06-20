@@ -1,0 +1,1 @@
+{ dock = import ./dock.nix; }

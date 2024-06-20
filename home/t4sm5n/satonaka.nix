@@ -6,7 +6,7 @@
 }:
 {
   imports = [
-    # outputs.darwinTrampolines
+    outputs.darwinTrampolines
     ./global
   ];
   home.homeDirectory = lib.mkForce "/Users/t4sm5n";
@@ -17,13 +17,19 @@
   home.packages = with pkgs; [
     glab
     kubectl
+    jetbrains.idea-community
+    nodejs_20
+    yarn
+    python39
   ];
 
-  programs.zsh.initExtra = ''
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-  . ~/.asdf/plugins/java/set-java-home.zsh
-  '';
-  programs.zsh.oh-my-zsh.plugins = [ "asdf" ];
+  programs.java = {
+    enable = true;
+    package = pkgs.temurin-bin;
+  };
+
+  # programs.zsh.initExtra = '''';
+  # programs.zsh.oh-my-zsh.plugins = [ "asdf" ];
 
   programs.git.includes = [
     {
