@@ -9,6 +9,11 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -61,7 +66,10 @@
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {
         yoshizawa = nixpkgs.lib.nixosSystem {
-          modules = [ ./hosts/yoshizawa/configuration.nix ];
+          modules = [
+            inputs.disko.nixosModules.disko
+            ./hosts/yoshizawa/configuration.nix
+          ];
           specialArgs = {
             inherit inputs outputs;
           };

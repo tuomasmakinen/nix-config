@@ -61,15 +61,12 @@
         ])
       ];
     };
-    "org/gnome/settings-daemon/plugins/media-keys" = {
-      custom-keybindings = [
-        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
-      ];
+    "org/gnome/desktop/wm/keybinding" = {
+      switch-input-source = "@as []";
+      switch-input-source-backward = "@as []";
     };
-    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
-      name = "ULauncher";
-      command = "ulauncher-toggle";
-      binding = "<Super>space";
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      search = "<Super>space";
     };
     "org/gnome/desktop/background" = {
       picture-options = "center";

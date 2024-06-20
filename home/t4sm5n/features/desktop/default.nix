@@ -13,6 +13,15 @@
           ublock-origin
         ];
       };
+      policies = {
+        EnableTrackingProtection = {
+          Value = true;
+        };
+        OfferToSaveLogins = false;
+        Preferences = {
+          "general.autoScroll" = true;
+        };
+      };
     };
     kitty = {
       enable = true;

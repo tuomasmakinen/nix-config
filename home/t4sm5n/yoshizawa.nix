@@ -3,7 +3,6 @@
   imports = [
     ./global
     ./features/desktop/gnome
-    ./features/desktop/ulauncher
   ];
 
   home.packages = with pkgs; [
@@ -14,6 +13,7 @@
     cider
     guitarix
     libreoffice
+    logseq
     nh
     obsidian
     ranger

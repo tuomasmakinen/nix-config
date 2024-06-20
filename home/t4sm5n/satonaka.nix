@@ -9,6 +9,7 @@
     outputs.darwinTrampolines
     ./global
   ];
+
   home.homeDirectory = lib.mkForce "/Users/t4sm5n";
   programs.firefox.enable = lib.mkForce false;
   programs.thunderbird.enable = lib.mkForce false;
@@ -27,9 +28,6 @@
     enable = true;
     package = pkgs.temurin-bin;
   };
-
-  # programs.zsh.initExtra = '''';
-  # programs.zsh.oh-my-zsh.plugins = [ "asdf" ];
 
   programs.git.includes = [
     {
