@@ -5,4 +5,5 @@ in
   "restic/env.age".publicKeys = [ t4sm5n ];
   "restic/repo.age".publicKeys = [ t4sm5n ];
   "restic/password.age".publicKeys = [ t4sm5n ];
+  "t4sm5n/password.age".publicKeys = [ t4sm5n ];
 }

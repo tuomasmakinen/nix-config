@@ -24,7 +24,7 @@
   fonts.packages = [ pkgs.fira-code ];
 
   virtualisation = {
-    docker.enable = true;
+    podman.enable = true;
     waydroid.enable = true;
     spiceUSBRedirection.enable = true;
   };
