@@ -1,4 +1,3 @@
-{ ... }:
 {
   boot.kernelParams = [ "reboot=acpi" ];
   boot.loader.systemd-boot.enable = true;

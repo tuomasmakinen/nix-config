@@ -17,9 +17,15 @@
     ./hardware-configuration.nix
     ./locale.nix
     ./users.nix
+    ./vm.nix
   ] ++ (builtins.attrValues outputs.nixosModules);
 
-  age.identityPaths = [ "${config.users.users.t4sm5n.home}/.ssh/id_ed25519" ];
+  environment.systemPackages = with pkgs; [
+    curl
+    git
+    kitty
+    neovim
+  ];
 
   fonts.packages = [ pkgs.fira-code ];
 
@@ -37,8 +43,6 @@
     enable = true;
   };
 
-  # Enable sound with pipewire.
-  sound.enable = false;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -49,7 +53,7 @@
     jack.enable = true;
   };
 
-  services.printing.enable = true;
+  age.identityPaths = [ "${config.users.users.t4sm5n.home}/.ssh/id_ed25519" ];
 
   networking = {
     hostName = "yoshizawa";
