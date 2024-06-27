@@ -57,16 +57,6 @@
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {
-        aegis = nixpkgs.lib.nixosSystem {
-          modules = [
-            inputs.disko.nixosModules.disko
-            inputs.agenix.nixosModules.default
-            ./hosts/aegis/configuration.nix
-          ];
-          specialArgs = {
-            inherit inputs outputs;
-          };
-        };
         yoshizawa = nixpkgs.lib.nixosSystem {
           modules = [
             inputs.disko.nixosModules.disko
