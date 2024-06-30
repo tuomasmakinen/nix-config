@@ -9,23 +9,15 @@
 
 {
   imports = [
-    ../common
     ./backup.nix
-    ./desktop.nix
     ./disko.nix
+    ./gnome.nix
     ./hardware-additional.nix
     ./hardware-configuration.nix
     ./locale.nix
     ./users.nix
     ./vm.nix
   ] ++ (builtins.attrValues outputs.nixosModules);
-
-  environment.systemPackages = with pkgs; [
-    curl
-    git
-    kitty
-    neovim
-  ];
 
   fonts.packages = [ pkgs.fira-code ];
 
@@ -35,8 +27,16 @@
     spiceUSBRedirection.enable = true;
   };
 
-  environment.sessionVariables = {
-    FLAKE = "/home/t4sm5n/nix-config";
+  environment = {
+    sessionVariables = {
+      FLAKE = "/home/t4sm5n/nix-config";
+    };
+    systemPackages = with pkgs; [
+      curl
+      git
+      kitty
+      neovim
+    ];
   };
 
   programs.steam = {
@@ -60,15 +60,30 @@
     networkmanager.enable = true;
   };
 
-  nix.registry = (lib.mapAttrs (_: flake: { inherit flake; })) (
-    (lib.filterAttrs (_: lib.isType "flake")) inputs
-  );
-
-  nix.nixPath = [ "/etc/nix/path" ];
   environment.etc = lib.mapAttrs' (name: value: {
     name = "nix/path/${name}";
     value.source = value.flake;
   }) config.nix.registry;
+
+  nixpkgs = {
+    overlays = builtins.attrValues outputs.overlays;
+    config = {
+      allowUnfree = true;
+    };
+  };
+
+  nix = {
+    nixPath = [ "/etc/nix/path" ];
+    registry = (lib.mapAttrs (_: flake: { inherit flake; })) (
+      (lib.filterAttrs (_: lib.isType "flake")) inputs
+    );
+    settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+    };
+  };
 
   system.stateVersion = "24.05";
 }

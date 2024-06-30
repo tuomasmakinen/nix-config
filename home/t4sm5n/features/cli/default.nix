@@ -1,10 +1,9 @@
-{ ... }:
 {
   imports = [
+    ./direnv
+    ./git
+    ./neovim
     ./starship
-    ./direnv.nix
-    ./git.nix
-    ./neovim.nix
-    ./zsh.nix
+    ./zsh
   ];
 }

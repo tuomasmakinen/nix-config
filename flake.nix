@@ -9,19 +9,23 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    agenix = {
+      url = "github:ryantm/agenix";
+    };
+
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    agenix = {
-      url = "github:ryantm/agenix";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-    nur.url = "github:nix-community/nur";
+    nur = {
+      url = "github:nix-community/nur";
+    };
   };
 
   outputs =
@@ -50,17 +54,15 @@
       homeManagerModules = import ./modules/home-manager;
 
       overlays = import ./overlays { inherit inputs outputs; };
-
       packages = forAllSystems (pkgs: import ./pkgs { inherit pkgs; });
+
       formatter = forAllSystems (pkgs: pkgs.nixfmt-rfc-style);
 
-      # NixOS configuration entrypoint
-      # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {
         yoshizawa = nixpkgs.lib.nixosSystem {
           modules = [
-            inputs.disko.nixosModules.disko
             inputs.agenix.nixosModules.default
+            inputs.disko.nixosModules.disko
             ./hosts/yoshizawa/configuration.nix
           ];
           specialArgs = {
@@ -69,8 +71,6 @@
         };
       };
 
-      # Standalone home-manager configuration entrypoint
-      # Available through 'home-manager --flake .#your-username@your-hostname'
       homeConfigurations = {
         "t4sm5n@yoshizawa" = home-manager.lib.homeManagerConfiguration {
           modules = [ ./home/t4sm5n/yoshizawa.nix ];
